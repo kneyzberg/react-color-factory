@@ -1,25 +1,28 @@
-import {useState} from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, Route} from "react-router-dom";
 import ColorHeader from "./ColorHeader";
+import NewColorForm from "./NewColorForm";
 
-const defaultColors = ["red", "green", "blue"]
 
-function ColorsList({colors=defaultColors}){
-  const [colorList, setColorList] = useState(colors);
+function ColorsList({colorList}) {
 
-  return(
+  console.log(colorList)
+
+  return (
     <div>
-      <ColorHeader/>
+
+      <ColorHeader />
+
       <h4>Please pick a color!</h4>
       <ul>
-        {colorList.map(color => 
-        (<li>
-          <Link to={`/colors/${color}`}>{color}</Link>
-        </li>)
-        )}
+        {colorList.map((color) => (
+          <li>
+            <Link to={`/colors/${color.name}`}>{color.name}</Link>
+          </li>
+        ))}
       </ul>
     </div>
-  )}
+  );
+}
 
-
-  export default ColorsList;
+export default ColorsList;
